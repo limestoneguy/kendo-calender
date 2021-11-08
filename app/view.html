@@ -1,0 +1,42 @@
+<div style="height: 300px; width: 342px; border: solid 1px">
+  <ng-container *ngIf="!showConfig">
+    <kendo-splitter
+      orientation="horizontal"
+      style="height: 300px; width: 320px"
+    >
+      <kendo-splitter-pane size="25%">
+        <div class="pane-content">
+          <p>CALENDER</p>
+        </div>
+      </kendo-splitter-pane>
+
+      <kendo-splitter-pane [resizable]="false" [collapsible]="false">
+        <kendo-splitter orientation="vertical">
+          <kendo-splitter-pane
+            [resizable]="false"
+            [collapsible]="false"
+            size="90%"
+          >
+            <div class="pane-content">
+              <kendo-calendar type="classic"></kendo-calendar>
+            </div>
+          </kendo-splitter-pane>
+          <kendo-splitter-pane [resizable]="false" [collapsible]="false">
+            <div class="pane-content">
+              <p>Warnings and Infos.</p>
+            </div>
+          </kendo-splitter-pane>
+        </kendo-splitter>
+      </kendo-splitter-pane>
+    </kendo-splitter></ng-container
+  >
+  <ng-container *ngIf="showConfig">
+    <my-holiday-config
+      (closeConfigWindow)="showConfig=false"
+    ></my-holiday-config>
+  </ng-container>
+
+  <span (click)="showConfig=!showConfig" *ngIf="(showConfig===false)"
+    >{{(showConfig)? 'Hide Config': 'Show Config'}}</span
+  >
+</div>

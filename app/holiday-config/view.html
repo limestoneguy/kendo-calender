@@ -1,0 +1,37 @@
+<div class="example-wrapper">
+  <div style="padding: 0px 5px 0px 10px">
+    <span>SHOW/HIDE CALENDARS(5 Calenders Max)</span>
+    <span style="float: right; cursor: pointer" (click)="closeConfig()">X</span>
+  </div>
+
+  <kendo-multiselect
+    #list
+    [checkboxes]="{ checkOnClick: false }"
+    [autoClose]="false"
+    [data]="data"
+    [filterable]="true"
+    [itemDisabled]="itemDisabled"
+    [textField]="'text'"
+    [valueField]="'value'"
+    [(ngModel)]="value"
+    placeholder="Filter"
+    (valueChange)="onValueChange($event)"
+    (close)="preventClosingDropdown($event)"
+    animate="false"
+  ></kendo-multiselect>
+</div>
+<div style="position: absolute; bottom: 0px; right: 0px">
+  <ul>
+    <li *ngFor="let colr of colorData">
+      <h3 [style.background-color]="colr">{{colr}}</h3>
+    </li>
+  </ul>
+
+  <ul>
+    <li *ngFor="let item of source">
+      <h3 *ngIf="item.colorValue" [style.background-color]="item.colorValue">
+        {{item.text}}
+      </h3>
+    </li>
+  </ul>
+</div>
